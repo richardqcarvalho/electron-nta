@@ -1,6 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Routes from './src/routes';
-import './global.css';
+import Header from './src/components/Header';
+import './src/styles/global.css';
 
-render(<Routes />, document.getElementById('root'));
+render(
+  <>
+    <Header />
+    <Routes />
+  </>,
+  document.getElementById('root'),
+);
