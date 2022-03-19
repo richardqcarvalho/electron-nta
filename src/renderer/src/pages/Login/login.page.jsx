@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { connect } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import PropTypes from 'prop-types';
 import {
   Wrapper, Container, Input, Button,
 } from './styles';
-import { login } from '../../actions/user.action';
+import { login as loginAction } from '../../actions/user.action';
 
-export default function Login() {
+function Login({ login }) {
   // const navigateTo = useNavigate();
   const [credentials, setCredentials] = useState({
     user: 'richard',
@@ -46,3 +49,15 @@ export default function Login() {
     </Container>
   );
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => state;
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  login: loginAction,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
