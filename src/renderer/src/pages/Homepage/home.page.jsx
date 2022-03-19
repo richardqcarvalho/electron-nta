@@ -5,7 +5,7 @@ import {
   Wrapper, Container, Button,
 } from './styles';
 
-export default function Homepage() {
+export default function Home() {
   const navigateTo = useNavigate();
   const [authenticated] = useState(false);
   useEffect(() => {

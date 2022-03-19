@@ -3,13 +3,13 @@ import {
   BrowserRouter, Route, Routes as Container,
 } from 'react-router-dom';
 import Login from './pages/Login';
-import Homepage from './pages/Homepage';
+import Home from './pages/Home';
 
 export default function Routes() {
   return (
     <BrowserRouter>
       <Container>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
       </Container>
     </BrowserRouter>

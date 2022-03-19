@@ -4,17 +4,14 @@ import { motion } from 'framer-motion';
 import {
   Wrapper, Container, Input, Button,
 } from './styles';
+import { login } from '../../actions/user.action';
 
 export default function Login() {
   // const navigateTo = useNavigate();
   const [credentials, setCredentials] = useState({
-    login: '',
-    password: '',
+    user: 'richard',
+    password: 'vv2Tw1672ReWpK7n0nzR3sKyyYqcINud',
   });
-
-  const handleSubmit = () => {
-    console.log(credentials);
-  };
 
   return (
     <Container
@@ -29,7 +26,7 @@ export default function Login() {
       <Wrapper>
         <Input onChange={({ target: { value } }) => setCredentials({
           ...credentials,
-          login: value,
+          user: value,
         })}
         />
         <Input onChange={({ target: { value } }) => setCredentials({
@@ -39,7 +36,7 @@ export default function Login() {
         />
         <Button
           as={motion.button}
-          onClick={() => handleSubmit()}
+          onClick={() => login(credentials)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
