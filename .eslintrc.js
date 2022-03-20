@@ -22,5 +22,6 @@ module.exports = {
     'no-unused-expressions': ['error', {
       allowTernary: true,
     }],
+    'default-param-last': 'off',
   },
 };
