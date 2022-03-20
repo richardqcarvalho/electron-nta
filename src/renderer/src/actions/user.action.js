@@ -1,8 +1,8 @@
-import API from '../services/api.service';
+import api from '../services/api.service';
 
 export const login = ({ user, password }) => {
   // dispatch({ type: START_REQUEST })
-  API.get('/user/login', {
+  api.get('/user/login', {
     auth_username: user,
     auth_password: password,
   });
