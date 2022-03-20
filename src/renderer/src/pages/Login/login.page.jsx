@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import {
-  Wrapper, Container, Input, Button,
-} from './styles';
+import { Wrapper, Container } from './styles';
 import { login as loginAction } from '../../actions/user.action';
+import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 function Login({ login }) {
   // const navigateTo = useNavigate();
@@ -38,13 +38,9 @@ function Login({ login }) {
         })}
         />
         <Button
-          as={motion.button}
           onClick={() => login(credentials)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Entrar
-        </Button>
+          text="Entrar"
+        />
       </Wrapper>
     </Container>
   );
