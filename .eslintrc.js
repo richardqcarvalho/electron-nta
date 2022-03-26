@@ -23,5 +23,6 @@ module.exports = {
       allowTernary: true,
     }],
     'default-param-last': 'off',
+    'react/forbid-prop-types': 'off',
   },
 };

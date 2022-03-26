@@ -9,7 +9,7 @@ const getQuery = (params) => {
   keys.forEach((key, index) => {
     index + 1 === keys.length
       ? query += `${key}=${params[key]}`
-      : query += `${key}=${params[key]};`;
+      : query += `${key}=${params[key]}&`;
   });
 
   return query;
