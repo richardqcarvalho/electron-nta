@@ -12,16 +12,22 @@ const DEFAULT_STATE = {
 export default function userReducer(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case actionTypes.LOGIN_SUCCESS:
+      localStorage.setItem('id', action.payload);
+
       return {
         user: action.payload,
         error: null,
       };
     case actionTypes.LOGIN_FAILURE:
+      localStorage.clear();
+
       return {
         user: null,
         error: action.payload,
       };
     case actionTypes.LOGOUT:
+      localStorage.clear();
+
       return DEFAULT_STATE;
     default:
       return state;
