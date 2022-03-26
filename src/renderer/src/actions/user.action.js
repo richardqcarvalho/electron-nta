@@ -1,16 +1,19 @@
 import api from '../services/api.service';
+import { actionTypes } from '../reducers/user.reducer';
 
-export const login = ({ user, password }) => {
-  // dispatch({ type: START_REQUEST })
-  api.get('/user/login', {
+export const login = ({ user, password }, redirectTo, url) => (dispatch) => {
+  api.fetch('/user/login', {
     auth_username: user,
     auth_password: password,
-  });
-  // .then((response) => {
-  //   console.log({ response });
-  // }).catch((error) => {
-  //   console.log({ error });
-  // });
+  })
+    .then((response) => {
+      dispatch({
+        type: actionTypes.LOGIN_SUCCESS,
+        payload: response.data.id,
+      });
+
+      redirectTo(url);
+    });
 };
 
 export const logout = () => () => {
