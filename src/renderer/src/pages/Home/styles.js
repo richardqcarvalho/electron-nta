@@ -15,22 +15,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Input = styled.input`
-  background-color: transparent;
-  border: 1px solid ${colors.secondary};
-  height: 40px;
-  padding: 10px;
+export const Box = styled.button`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 10pt;
   margin-bottom: 10px;
-  border-radius: 8px;
-  color: ${colors.secondary};
-`;
-
-export const Button = styled.button`
-  background-color: ${colors.secondary};
-  border: none;
-  height: 40px;
-  padding: 10px;
-  border-radius: 8px;
-  width: 100%;
-  color: ${colors.primary};
 `;

@@ -2,16 +2,23 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { getUsers as getUsersAction } from '../../actions/user.action';
 import {
-  Wrapper, Container, Button,
+  Wrapper, Container, Box,
 } from './styles';
 
-function Home() {
+function Home({ getUsers, userReducer }) {
   const navigateTo = useNavigate();
   useEffect(() => {
-    const user = localStorage.getItem('id');
+    const userString = localStorage.getItem('user');
 
-    if (!user) navigateTo('/login');
+    if (!userString) navigateTo('/login');
+    else {
+      const user = JSON.parse(userString);
+      getUsers({ user: user.auth_username, password: user.auth_password });
+    }
   }, []);
 
   return (
@@ -25,12 +32,32 @@ function Home() {
       }}
     >
       <Wrapper>
-        <Button onClick={() => navigateTo('/login')}>Entrar</Button>
+        {userReducer.list.map((user) => (
+          <Box
+            as={motion.div}
+            onClick={() => {}}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {user.username}
+          </Box>
+        ))}
       </Wrapper>
     </Container>
   );
 }
 
+Home.propTypes = {
+  getUsers: PropTypes.func.isRequired,
+  userReducer: PropTypes.shape({
+    list: PropTypes.array,
+  }).isRequired,
+};
+
 const mapStateToProps = (state) => state;
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  getUsers: getUsersAction,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
