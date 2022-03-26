@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { connect } from 'react-redux';
 import {
   Wrapper, Container, Button,
 } from './styles';
 
-export default function Home() {
+function Home() {
   const navigateTo = useNavigate();
-  const [authenticated] = useState(false);
   useEffect(() => {
-    if (!authenticated) navigateTo('/login');
+    const user = localStorage.getItem('id');
+
+    if (!user) navigateTo('/login');
   }, []);
 
   return (
@@ -28,3 +30,7 @@ export default function Home() {
     </Container>
   );
 }
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps)(Home);

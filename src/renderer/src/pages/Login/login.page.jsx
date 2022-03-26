@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
@@ -10,11 +10,15 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 function Login({ login }) {
-  // const navigateTo = useNavigate();
+  const navigateTo = useNavigate();
   const [credentials, setCredentials] = useState({
-    user: 'richard',
-    password: 'vv2Tw1672ReWpK7n0nzR3sKyyYqcINud',
+    user: '',
+    password: '',
   });
+
+  const handleLogin = () => {
+    login(credentials, navigateTo, '/');
+  };
 
   return (
     <Container
@@ -38,7 +42,7 @@ function Login({ login }) {
         })}
         />
         <Button
-          onClick={() => login(credentials)}
+          onClick={() => handleLogin()}
           text="Entrar"
         />
       </Wrapper>
