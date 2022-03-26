@@ -5,10 +5,10 @@ const path = require('path');
 
 app.on('ready', async () => {
   const window = new BrowserWindow({
-    width: 500,
+    width: 700,
     minHeight: 500,
     frame: false,
-    x: screen.getPrimaryDisplay().bounds.width - 500,
+    x: screen.getPrimaryDisplay().bounds.width - 700,
     y: 0,
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),

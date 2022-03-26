@@ -1,4 +1,4 @@
-const baseURL = 'http://web.beta.sip2sip.net/api/json';
+const baseURL = 'http://hosted.nta.co.uk/api/json';
 
 const getQuery = (params) => {
   if (!params) {
@@ -16,10 +16,5 @@ const getQuery = (params) => {
 };
 
 export default {
-  get: (requestRoute, params) => window.electron.get(`${baseURL}${requestRoute}${getQuery(params)}`, (response) => {
-    response.on('data', (data) => console.log(data));
-  }),
-  post: (requestRoute, params) => window.electron.post(`${baseURL}${requestRoute}${getQuery(params)}`, (response) => {
-    response.on('data', (data) => console.log(data));
-  }),
+  fetch: (requestRoute, params) => fetch(`${baseURL}${requestRoute}${getQuery(params)}`).then((response) => response.json()),
 };
