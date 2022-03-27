@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { getUsers as getUsersAction } from '../../actions/user.action';
 import {
-  Wrapper, Container, Box,
+  Container,
+  Box,
 } from './styles';
 
 function Home({ getUsers, userReducer }) {
@@ -31,18 +32,19 @@ function Home({ getUsers, userReducer }) {
         visible: { opacity: 1 },
       }}
     >
-      <Wrapper>
-        {userReducer.list.map((user) => (
-          <Box
-            as={motion.div}
-            onClick={() => {}}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {user.username}
-          </Box>
-        ))}
-      </Wrapper>
+      {userReducer.list.map((user, index) => (
+        <Box
+          as={motion.div}
+          onClick={() => {}}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          style={{
+            ...(index + 1 !== userReducer.list.length && { marginBottom: 50 }),
+          }}
+        >
+          {user.username}
+        </Box>
+      ))}
     </Container>
   );
 }
