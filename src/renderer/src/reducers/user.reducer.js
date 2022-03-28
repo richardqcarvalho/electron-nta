@@ -3,12 +3,14 @@ export const actionTypes = {
   LOGIN_FAILURE: 'LOGIN_FAILURE',
   LOGOUT: 'LOGOUT',
   LIST_PEOPLE_SUCCESS: 'LIST_PEOPLE_SUCCESS',
+  GET_PEOPLE_SUCCESS: 'GET_PEOPLE_SUCCESS',
 };
 
 const DEFAULT_STATE = {
   user: null,
   error: null,
   list: [],
+  selectedUser: null,
 };
 
 export default function userReducer(state = DEFAULT_STATE, action) {
@@ -38,6 +40,12 @@ export default function userReducer(state = DEFAULT_STATE, action) {
       return {
         ...state,
         list: action.payload,
+        selectedUser: null,
+      };
+    case actionTypes.GET_PEOPLE_SUCCESS:
+      return {
+        ...state,
+        selectedUser: action.payload,
       };
     default:
       return state;

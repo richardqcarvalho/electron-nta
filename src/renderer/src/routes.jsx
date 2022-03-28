@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import UserDetail from './pages/UserDetail';
 
 export default function Routes() {
   return (
@@ -11,6 +12,7 @@ export default function Routes() {
       <Container>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/user-detail" element={<UserDetail />} />
       </Container>
     </BrowserRouter>
   );

@@ -30,3 +30,17 @@ export const getUsers = ({ user, password }) => (dispatch) => {
       });
     });
 };
+
+export const getUser = ({ user, password, id }) => (dispatch) => {
+  api.fetch('/people/get', {
+    auth_username: user,
+    auth_password: password,
+    id,
+  })
+    .then((response) => {
+      dispatch({
+        type: actionTypes.GET_PEOPLE_SUCCESS,
+        payload: response.data,
+      });
+    });
+};
