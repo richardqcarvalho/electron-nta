@@ -38,6 +38,11 @@ module.exports = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.svg$/i,
+        exclude: /node_modules/,
+        use: ['svg-url-loader'],
+      },
     ],
   },
 };
