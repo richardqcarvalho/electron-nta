@@ -14,7 +14,7 @@ export const Container = styled.div`
   padding: 100px;
 `;
 
-export const Box = styled.button`
+export const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,5 +23,20 @@ export const Box = styled.button`
   height: 300px;
   background-color: white;
   border-radius: 8px;
-  font-size: 10pt;
+  z-index: 2;
+  position: relative;
+`;
+
+export const BoxText = styled.span`
+  pointer-events: none;
+  user-select: none;
+  font-size: 12pt;
+  font-weight: bold;
+`;
+
+export const Avatar = styled.img`
+  width: 200px;
+  height: 200px;
+  margin-bottom: 25px;
+  user-drag: none;
 `;

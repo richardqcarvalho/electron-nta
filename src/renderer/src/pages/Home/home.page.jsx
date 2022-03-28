@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
@@ -8,19 +8,29 @@ import { getUsers as getUsersAction } from '../../actions/user.action';
 import {
   Container,
   Box,
+  BoxText,
+  Avatar,
 } from './styles';
+import Profile from '../../assets/profile.svg';
 
 function Home({ getUsers, userReducer }) {
   const navigateTo = useNavigate();
+  const [userId, setUserId] = useState(null);
   useEffect(() => {
     const userString = localStorage.getItem('user');
 
     if (!userString) navigateTo('/login');
     else {
       const user = JSON.parse(userString);
-      getUsers({ user: user.auth_username, password: user.auth_password });
+      setUserId(user.id.toString());
+      getUsers({
+        user: user.auth_username,
+        password: user.auth_password,
+      });
     }
   }, []);
+  const usersList = userReducer.list
+    .filter((user) => user.id !== userId);
 
   return (
     <Container
@@ -32,19 +42,27 @@ function Home({ getUsers, userReducer }) {
         visible: { opacity: 1 },
       }}
     >
-      {userReducer.list.map((user, index) => (
-        <Box
-          as={motion.div}
-          onClick={() => {}}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          style={{
-            ...(index + 1 !== userReducer.list.length && { marginBottom: 50 }),
-          }}
-        >
-          {user.username}
-        </Box>
-      ))}
+      {usersList
+        .map((user, index) => (
+          <Box
+            key={user.id}
+            as={motion.div}
+            onClick={() => navigateTo('/user-detail', {
+              state: {
+                user,
+              },
+            })}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              ...(index + 1 !== usersList.length
+                  && { marginBottom: 50 }),
+            }}
+          >
+            <Avatar src={Profile} />
+            <BoxText>{user.forename}</BoxText>
+          </Box>
+        ))}
     </Container>
   );
 }

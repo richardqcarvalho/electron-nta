@@ -18,5 +18,6 @@ export const Icon = styled.span`
   color: ${colors.primary};
   font-size: 8pt;
   pointer-events: none;
+  user-select: none;
   font-weight: 800;
 `;
