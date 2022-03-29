@@ -26,6 +26,7 @@ function UserDetail({ userReducer, getUser }) {
       index,
     },
   } = useLocation();
+  const fakeNumber = `+${(index + 1).toString().repeat(11)}`;
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
@@ -77,7 +78,7 @@ function UserDetail({ userReducer, getUser }) {
           <InfoTitle>E-mail</InfoTitle>
           <InfoText>{userReducer.selectedUser.email}</InfoText>
           <InfoTitle>Number</InfoTitle>
-          <InfoText>{`+${(index + 1).toString().repeat(11)}`}</InfoText>
+          <InfoText>{fakeNumber}</InfoText>
           <Circle
             as={motion.div}
             whileHover={{ scale: 1.1 }}
@@ -88,7 +89,7 @@ function UserDetail({ userReducer, getUser }) {
                 index,
                 selectedUser: {
                   ...userReducer.selectedUser,
-                  number: `+${(index + 1).toString().repeat(11)}`,
+                  number: fakeNumber,
                 },
               },
             })}

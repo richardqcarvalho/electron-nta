@@ -37,11 +37,12 @@ function Call() {
   const [calling, setCalling] = useState(true);
   const [timeAmount, setTimeAmount] = useState(0);
   const [showChat, setShowChat] = useState(false);
-  const minutes = Math.floor(timeAmount / 60);
-  const seconds = timeAmount % 60;
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const chatContainerRef = useRef();
+  const minutes = Math.floor(timeAmount / 60);
+  const seconds = timeAmount % 60;
+
   const sendMessage = () => {
     setMessages((state) => [...state, inputValue]);
     setInputValue('');
