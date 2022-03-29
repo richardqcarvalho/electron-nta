@@ -9,6 +9,9 @@ const Input = styled.input`
   margin-bottom: 10px;
   border-radius: 8px;
   color: ${colors.secondary};
+  ::placeholder {
+    color: ${colors.placeholder}
+  }
 `;
 
 export default Input;

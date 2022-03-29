@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Icon } from './styles';
+import Close from '../../assets/close.svg';
 
 export default function Header() {
   return (
@@ -16,7 +17,7 @@ export default function Header() {
         visible: { x: 0 },
       }}
     >
-      <Icon>&#x2715;</Icon>
+      <Icon src={Close} />
     </Container>
   );
 }

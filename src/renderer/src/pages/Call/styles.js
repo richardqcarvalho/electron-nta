@@ -27,7 +27,7 @@ export const Circle = styled.div`
   bottom: 50px;
   left: calc(50vw - 30px);
   border-radius: 50%;
-  background-color: red;
+  background-color: ${colors.danger};
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -38,7 +38,7 @@ export const Circle = styled.div`
 
 export const PhoneCircle = styled.div`
   border-radius: 50%;
-  background-color: red;
+  background-color: ${colors.danger};
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -66,14 +66,14 @@ export const CallContainer = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: ${colors.completeBackground};
   z-index: 5;
   display: flex;
   justify-content: center;
 `;
 
 export const InfoText = styled.span`
-  color: #FFF;
+  color: ${colors.secondary};
   font-size: 16pt;
   margin-bottom: 10px;
   user-select: none;
@@ -82,7 +82,7 @@ export const InfoText = styled.span`
 export const ChatContainer = styled.div`
   width: 50vw;
   height: 100vh;
-  background-color: #FFF;
+  background-color: ${colors.secondary};
   z-index: 6;
   position: relative;
 `;
@@ -123,7 +123,7 @@ export const ChatInput = styled.input`
 export const ChatSendButton = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #FFF;
+  background-color: ${colors.secondary};
   border-radius: 50%;
   margin-left: 7.5px;
   display: flex;
@@ -138,8 +138,7 @@ export const ChatMessage = styled.div`
   float: right;
   font-size: 9pt;
   padding: 10px 10px;
-  color: #FFF;
-  /* font-weight: bold; */
+  color: ${colors.secondary};
   border-radius: 16px;
   word-wrap: break-word;
   margin-bottom: 5px;
@@ -149,7 +148,7 @@ export const ChatMessagesContainer = styled.div`
   width: 50vw;
   height: calc(100vh - 70px);
   align-items: right;
-  padding: 10px;
+  padding: 35px 10px 10px 10px;
   overflow: scroll;
   ::-webkit-scrollbar {
     display: none;

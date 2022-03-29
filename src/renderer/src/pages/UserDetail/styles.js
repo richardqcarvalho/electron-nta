@@ -21,13 +21,13 @@ export const Card = styled.div`
   min-height: 300px;
   background-color: white;
   border-radius: 8px;
-  padding: 25px 0;
+  padding: 50px 0 25px 0;
 `;
 
 export const BackIconContainer = styled.div`
   position: absolute;
-  top: 25px;
-  left: 25px;
+  top: 15px;
+  left: 15px;
 `;
 
 export const BackIcon = styled.img`

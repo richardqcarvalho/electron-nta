@@ -3,7 +3,7 @@ import colors from '../../styles/colors.style';
 
 export const Container = styled.div`
   position: absolute;
-  background-color: #FFF;
+  background-color: ${colors.secondary};
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -14,9 +14,8 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Icon = styled.span`
-  color: ${colors.primary};
-  font-size: 20px;
-  pointer-events: none;
-  user-select: none;
+export const Icon = styled.img`
+  width: 15px;
+  height: 15px;
+  user-drag: none;
 `;

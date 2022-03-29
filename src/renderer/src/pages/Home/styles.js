@@ -48,7 +48,7 @@ export const SeeTabs = styled.div`
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: #FFF;
+  background-color: ${colors.secondary};
   padding: 10px;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@ export const SeeTabsText = styled.span`
 export const Modal = styled.div`
   position: relative;
   min-width: 400px;
-  background-color: #FFF;
+  background-color: ${colors.secondary};
   z-index: 4;
   border-radius: 8px;
   padding: 10px;
@@ -81,7 +81,7 @@ export const ModalBackground = styled.div`
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${colors.transparentBackground};
   z-index: 3;
   display: flex;
   justify-content: center;
@@ -90,12 +90,12 @@ export const ModalBackground = styled.div`
 
 export const LogoutContainer = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  background-color: ${colors.secondary};
+  border-radius: 50%;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  background-color: #FFF;
+  top: 10px;
+  right: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
