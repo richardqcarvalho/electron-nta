@@ -23,6 +23,7 @@ function UserDetail({ userReducer, getUser }) {
   const {
     state: {
       user,
+      index,
     },
   } = useLocation();
 
@@ -48,7 +49,15 @@ function UserDetail({ userReducer, getUser }) {
       }}
     >
       {userReducer.selectedUser && (
-        <Card>
+        <Card
+          as={motion.div}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { x: 700 },
+            visible: { x: 0 },
+          }}
+        >
           <BackIconContainer
             as={motion.div}
             whileHover={{ scale: 1.25 }}
@@ -59,20 +68,30 @@ function UserDetail({ userReducer, getUser }) {
               onClick={() => navigateTo('/')}
             />
           </BackIconContainer>
-          <button
-            type="button"
-            onClick={() => {}}
-          >
-            Tabs
-          </button>
+          <InfoTitle>Full name</InfoTitle>
+          <InfoText>{`${userReducer.selectedUser.title} ${userReducer.selectedUser.forename} ${userReducer.selectedUser.surname}`}</InfoText>
+          <InfoTitle>Username</InfoTitle>
+          <InfoText>{userReducer.selectedUser.username}</InfoText>
           <InfoTitle>Country</InfoTitle>
           <InfoText>{userReducer.selectedUser.country}</InfoText>
           <InfoTitle>E-mail</InfoTitle>
           <InfoText>{userReducer.selectedUser.email}</InfoText>
+          <InfoTitle>Number</InfoTitle>
+          <InfoText>{`+${(index + 1).toString().repeat(11)}`}</InfoText>
           <Circle
             as={motion.div}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            onClick={() => navigateTo('/call', {
+              state: {
+                user,
+                index,
+                selectedUser: {
+                  ...userReducer.selectedUser,
+                  number: `+${(index + 1).toString().repeat(11)}`,
+                },
+              },
+            })}
           >
             <PhoneIcon src={Phone} />
           </Circle>
