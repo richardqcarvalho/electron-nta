@@ -1,5 +1,7 @@
 const {
-  app, BrowserWindow, screen, ipcMain,
+  app,
+  BrowserWindow,
+  ipcMain,
 } = require('electron');
 const path = require('path');
 
@@ -8,8 +10,6 @@ app.on('ready', async () => {
     width: 700,
     minHeight: 500,
     frame: false,
-    x: screen.getPrimaryDisplay().bounds.width - 700,
-    y: 0,
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
     },

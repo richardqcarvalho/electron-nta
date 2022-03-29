@@ -24,5 +24,6 @@ module.exports = {
     }],
     'default-param-last': 'off',
     'react/forbid-prop-types': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
