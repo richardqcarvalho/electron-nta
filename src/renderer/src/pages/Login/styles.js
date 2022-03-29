@@ -13,4 +13,29 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 10px;
+`;
+
+export const ErrorMessage = styled.span`
+  font-weight: bold;
+  color: ${colors.secondary};
+  margin-left: 10px;
+  font-size: 8pt;
+`;
+
+export const ErrorContainer = styled.div`
+  padding: 5px;
+  background-color: ${colors.danger};
+  margin-top: 10px;
+  border-radius: 8px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`;
+
+export const ErrorIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  user-drag: none;
 `;

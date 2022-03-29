@@ -8,13 +8,22 @@ export const login = ({ user, password }, redirectTo, url) => (dispatch) => {
     auth_username: user,
     auth_password: password,
   })
-    .then((response) => {
-      dispatch({
-        type: actionTypes.LOGIN_SUCCESS,
-        payload: response.data,
-      });
+    .then(({
+      data, responses: [{ code, message }],
+    }) => {
+      if (code === 200) {
+        dispatch({
+          type: actionTypes.LOGIN_SUCCESS,
+          payload: data,
+        });
 
-      redirectTo(url);
+        redirectTo(url);
+      } else {
+        dispatch({
+          type: actionTypes.LOGIN_FAILURE,
+          payload: message,
+        });
+      }
     });
 };
 

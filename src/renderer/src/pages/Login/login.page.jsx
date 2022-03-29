@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import { Wrapper, Container } from './styles';
+import {
+  Wrapper, Container, ErrorMessage, ErrorContainer, ErrorIcon,
+} from './styles';
 import { login as loginAction } from '../../actions/user.action';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
+import Alert from '../../assets/alert.svg';
 
-function Login({ login }) {
+function Login({ userReducer, login }) {
   const navigateTo = useNavigate();
   const [credentials, setCredentials] = useState({
     user: '',
@@ -31,10 +34,12 @@ function Login({ login }) {
       }}
     >
       <Wrapper>
-        <Input onChange={({ target: { value } }) => setCredentials({
-          ...credentials,
-          user: value,
-        })}
+        <Input
+          onChange={({ target: { value } }) => setCredentials({
+            ...credentials,
+            user: value,
+          })}
+          placeholder="Type your username"
         />
         <Input
           type="password"
@@ -42,11 +47,26 @@ function Login({ login }) {
             ...credentials,
             password: value,
           })}
+          placeholder="Type your password"
         />
         <Button
           onClick={() => handleLogin()}
-          text="Entrar"
+          text="Login"
         />
+        {userReducer.error && (
+          <ErrorContainer
+            as={motion.div}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { y: -50, opacity: 0 },
+              visible: { y: 0, opacity: 1 },
+            }}
+          >
+            <ErrorIcon src={Alert} />
+            <ErrorMessage>{userReducer.error}</ErrorMessage>
+          </ErrorContainer>
+        )}
       </Wrapper>
     </Container>
   );
@@ -54,6 +74,13 @@ function Login({ login }) {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  userReducer: PropTypes.shape({
+    error: PropTypes.string,
+  }),
+};
+
+Login.defaultProps = {
+  userReducer: { error: null },
 };
 
 const mapStateToProps = (state) => state;
