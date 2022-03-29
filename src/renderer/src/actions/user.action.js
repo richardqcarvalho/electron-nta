@@ -18,6 +18,14 @@ export const login = ({ user, password }, redirectTo, url) => (dispatch) => {
     });
 };
 
+export const logout = (redirectTo) => (dispatch) => {
+  dispatch({
+    type: actionTypes.LOGOUT,
+  });
+
+  redirectTo('/login');
+};
+
 export const getUsers = ({ user, password }) => (dispatch) => {
   api.fetch('/people/list', {
     auth_username: user,

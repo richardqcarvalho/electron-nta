@@ -40,3 +40,69 @@ export const Avatar = styled.img`
   margin-bottom: 25px;
   user-drag: none;
 `;
+
+export const SeeTabs = styled.div`
+  min-width: 100px;
+  min-height: 50px;
+  border-radius: 25px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #FFF;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+`;
+
+export const SeeTabsText = styled.span`
+  font-size: 8pt;
+  font-weight: bold;
+  color: ${colors.primary};
+  pointer-events: none;
+  user-select: none;
+`;
+
+export const Modal = styled.div`
+  position: relative;
+  min-width: 400px;
+  background-color: #FFF;
+  z-index: 4;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const ModalBackground = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LogoutContainer = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const LogoutIcon = styled.img`
+  width: 15px;
+  height: 15px;
+  user-drag: none;
+`;
