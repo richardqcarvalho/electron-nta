@@ -35,7 +35,6 @@ export default function userReducer(state = DEFAULT_STATE, action) {
       localStorage.clear();
 
       return DEFAULT_STATE;
-
     case actionTypes.LIST_PEOPLE_SUCCESS:
       return {
         ...state,

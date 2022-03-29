@@ -17,16 +17,17 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 300px;
+  min-width: 300px;
+  min-height: 300px;
   background-color: white;
   border-radius: 8px;
+  padding: 25px 0;
 `;
 
 export const BackIconContainer = styled.div`
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 25px;
+  left: 25px;
 `;
 
 export const BackIcon = styled.img`
@@ -42,9 +43,13 @@ export const PhoneIcon = styled.img`
 `;
 
 export const Circle = styled.div`
+  margin-top: 10px;
   border-radius: 50%;
   background-color: green;
   padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const InfoTitle = styled.span`

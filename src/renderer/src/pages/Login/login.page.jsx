@@ -36,10 +36,12 @@ function Login({ login }) {
           user: value,
         })}
         />
-        <Input onChange={({ target: { value } }) => setCredentials({
-          ...credentials,
-          password: value,
-        })}
+        <Input
+          type="password"
+          onChange={({ target: { value } }) => setCredentials({
+            ...credentials,
+            password: value,
+          })}
         />
         <Button
           onClick={() => handleLogin()}
