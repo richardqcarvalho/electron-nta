@@ -8,8 +8,8 @@ export const Icon = styled.img`
 `;
 
 export const SendIcon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 17.5px;
+  height: 17.5px;
   user-drag: none;
 `;
 
@@ -62,10 +62,10 @@ export const ChatCircle = styled.div`
 
 export const CallContainer = styled.div`
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background-color: ${colors.completeBackground};
   z-index: 5;
   display: flex;
@@ -81,7 +81,7 @@ export const InfoText = styled.span`
 
 export const ChatContainer = styled.div`
   width: 50vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background-color: ${colors.secondary};
   z-index: 6;
   position: relative;
@@ -93,7 +93,7 @@ export const TopInfo = styled.div`
   align-items: center;
   padding-top: 50px;
   width: 50vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
 `;
 
 export const IconsContainer = styled.div`
@@ -104,7 +104,7 @@ export const IconsContainer = styled.div`
 
 export const LeftContainer = styled.div`
   width: 50vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
 `;
@@ -123,7 +123,7 @@ export const ChatInput = styled.input`
 export const ChatSendButton = styled.div`
   width: 40px;
   height: 40px;
-  background-color: ${colors.secondary};
+  background-color: ${colors.primary};
   border-radius: 50%;
   margin-left: 7.5px;
   display: flex;
@@ -146,7 +146,7 @@ export const ChatMessage = styled.div`
 
 export const ChatMessagesContainer = styled.div`
   width: 50vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 120px);
   align-items: right;
   padding: 35px 10px 10px 10px;
   overflow: scroll;
@@ -160,7 +160,7 @@ export const ChatFooter = styled.div`
   height: 70px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: ${colors.primary};
+  background-color: ${colors.header};
   display: flex;
   align-items: center;
   justify-content: space-evenly;

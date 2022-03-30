@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   background-color: ${colors.primary};
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
   flex-direction: column;
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import colors from '../../styles/colors.style';
 
-export const Container = styled.div`
+export const IconContainer = styled.div`
   position: absolute;
   background-color: ${colors.secondary};
   border-radius: 50%;
@@ -12,10 +12,20 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 7;
+  -webkit-app-region: no-drag;
 `;
 
 export const Icon = styled.img`
   width: 15px;
   height: 15px;
   user-drag: none;
+`;
+
+export const HeaderContainer = styled.div`
+  background-color: ${colors.header};
+  width: 100vw;
+  height: 50px;
+  -webkit-app-region: drag;
+  z-index: 6;
 `;

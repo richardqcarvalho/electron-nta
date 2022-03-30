@@ -7,8 +7,8 @@ const path = require('path');
 
 app.on('ready', async () => {
   const window = new BrowserWindow({
-    width: 700,
-    minHeight: 500,
+    width: 1280,
+    height: 720,
     frame: false,
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
