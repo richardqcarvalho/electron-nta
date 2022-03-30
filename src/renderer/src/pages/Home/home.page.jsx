@@ -35,7 +35,7 @@ function Home({ getUsers, userReducer, logout }) {
   const navigateTo = useNavigate();
   const [showTabs, setShowTabs] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [shellResult, setShell] = useState([]);
+  const [shellResult, setShellResult] = useState([]);
   const [procSearchLoading, setProcSearchLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
 
@@ -65,9 +65,9 @@ function Home({ getUsers, userReducer, logout }) {
           return split[split.length - 1].replaceAll('"', '');
         });
 
-        setShell(titles);
+        setShellResult(titles);
       } else {
-        setShell([]);
+        setShellResult([]);
       }
       setProcSearchLoading(false);
     });
@@ -135,7 +135,7 @@ function Home({ getUsers, userReducer, logout }) {
       <SeeTitles
         as={motion.div}
         onClick={() => {
-          setShell([]);
+          setShellResult([]);
           setShowTabs(true);
         }}
         whileHover={{ scale: 1.1 }}

@@ -7,4 +7,5 @@ export default {
   placeholderSecondary: 'rgba(51, 190, 193, 0.75)',
   transparentBackground: 'rgba(0, 0, 0, 0.5)',
   completeBackground: '#000',
+  call: '#07913D',
 };

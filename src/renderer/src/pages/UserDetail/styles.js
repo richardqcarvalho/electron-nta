@@ -45,7 +45,7 @@ export const PhoneIcon = styled.img`
 export const Circle = styled.div`
   margin-top: 10px;
   border-radius: 50%;
-  background-color: green;
+  background-color: ${colors.call};
   padding: 15px;
   display: flex;
   justify-content: center;
