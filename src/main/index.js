@@ -10,6 +10,7 @@ app.on('ready', async () => {
     width: 1280,
     height: 720,
     frame: false,
+    icon: './public/favicon.ico',
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
     },
