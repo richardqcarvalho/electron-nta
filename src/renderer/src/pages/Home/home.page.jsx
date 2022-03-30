@@ -24,6 +24,8 @@ function Home({ getUsers, userReducer, logout }) {
   const [showTabs, setShowTabs] = useState(false);
   const navigateTo = useNavigate();
   const [userId, setUserId] = useState(null);
+  const [shellResult] = useState('');
+
   useEffect(() => {
     const userString = localStorage.getItem('user');
 
@@ -37,6 +39,13 @@ function Home({ getUsers, userReducer, logout }) {
       });
     }
   }, []);
+
+  useEffect(() => {
+    window.electron.exec('TASKLIST /v /fo list |find /i "google chrome" |find /v "N/A"', (_, stdout) => {
+      setShell(stdout);
+    });
+  }, []);
+
   const usersList = userReducer.list
     .filter((user) => user.id !== userId);
 
@@ -116,7 +125,7 @@ function Home({ getUsers, userReducer, logout }) {
           <motion.span
             onClick={() => window.electron.getTabs()}
           >
-            Teste
+            {shellResult}
           </motion.span>
         </Modal>
       </ModalBackground>
