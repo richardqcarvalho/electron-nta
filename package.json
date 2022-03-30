@@ -1,12 +1,13 @@
 {
   "name": "electron-nta",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Electron app constructed with React.JS",
   "author": "Richard Carvalho <richardcarvalhooo@gmail.com>",
   "main": "src/main/index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"wait-on http://localhost:3000 && electron .\"",
-    "build": "webpack && IS_PROD=true electron-builder -wl --x64"
+    "build:linux": "webpack --mode=production && IS_PROD=true electron-builder -w --x64",
+    "build:win": "webpack --mode=production && set IS_PROD=true electron-builder -w --x64"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -32,11 +33,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
-    "copy-webpack-plugin": "^10.2.4",
     "framer-motion": "^6.2.8",
     "html-webpack-plugin": "^5.5.0",
     "prop-types": "^15.8.1",
-    "ps-node": "^0.1.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -51,6 +50,12 @@
   "build": {
     "appId": "com.nta.electronapp",
     "productName": "Electron NTA",
+    "files": [
+      "*.js",
+      "src/**/*",
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "nsis": {
       "allowToChangeInstallationDirectory": true,
       "oneClick": false
