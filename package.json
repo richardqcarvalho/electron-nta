@@ -6,7 +6,7 @@
   "main": "src/main/index.js",
   "scripts": {
     "dev": "concurrently --kill-others \"webpack-dev-server\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electron .\"",
-    "build": "webpack --mode=production && electron-builder -wl"
+    "build": "webpack --mode=production && electron-builder -w"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -38,11 +38,13 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-loading": "^2.0.3",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "uuid": "^8.3.2"
   },
   "browserslist": [
     "last 1 chrome version"

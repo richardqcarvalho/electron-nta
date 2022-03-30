@@ -44,7 +44,7 @@ function Call() {
   const seconds = timeAmount % 60;
 
   const sendMessage = () => {
-    setMessages((state) => [...state, inputValue]);
+    setMessages((state) => (inputValue.length > 0 ? [...state, inputValue] : state));
     setInputValue('');
   };
 
@@ -177,6 +177,9 @@ function Call() {
             <ChatSendButton
               onClick={() => sendMessage()}
               src={Send}
+              as={motion.div}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <SendIcon src={Send} />
             </ChatSendButton>

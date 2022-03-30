@@ -40,6 +40,9 @@ function Login({ userReducer, login }) {
             user: value,
           })}
           placeholder="Type your username"
+          onKeyDown={({ key }) => {
+            if (key === 'Enter') handleLogin();
+          }}
         />
         <Input
           type="password"
@@ -48,6 +51,9 @@ function Login({ userReducer, login }) {
             password: value,
           })}
           placeholder="Type your password"
+          onKeyDown={({ key }) => {
+            if (key === 'Enter') handleLogin();
+          }}
         />
         <Button
           onClick={() => handleLogin()}
