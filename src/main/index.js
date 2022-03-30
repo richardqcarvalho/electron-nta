@@ -15,7 +15,7 @@ app.on('ready', async () => {
     },
   });
 
-  process.env.IS_PROD ? window.loadFile('./build/index.html') : window.loadURL('http://localhost:3000');
+  process.env.NODE_ENV === 'development' ? window.loadURL('http://localhost:3000') : window.loadFile('./build/index.html');
 });
 
 app.on('window-all-closed', () => app.quit());
