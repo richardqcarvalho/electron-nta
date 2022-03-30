@@ -4,27 +4,40 @@ import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from '@reduxjs/toolkit';
+import Loading from 'react-loading';
+import { v4 as uuid } from 'uuid';
 import { getUsers as getUsersAction, logout as logoutAction } from '../../actions/user.action';
 import {
   Container,
   Box,
   BoxText,
   Avatar,
-  SeeTabs,
-  SeeTabsText,
+  SeeTitles,
+  SeeTitlesText,
   Modal,
   ModalBackground,
   LogoutContainer,
   LogoutIcon,
+  SearchInput,
+  SearchWrapper,
+  SearchBody,
+  Processes,
+  Message,
+  MessageContainer,
+  CentralizedContainer,
 } from './styles';
 import Profile from '../../assets/profile.svg';
 import Logout from '../../assets/logout.svg';
+import colors from '../../styles/colors.style';
+import Button from '../../components/Button';
 
 function Home({ getUsers, userReducer, logout }) {
-  const [showTabs, setShowTabs] = useState(false);
   const navigateTo = useNavigate();
+  const [showTabs, setShowTabs] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [shellResult] = useState('');
+  const [shellResult, setShell] = useState([]);
+  const [procSearchLoading, setProcSearchLoading] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
@@ -40,11 +53,25 @@ function Home({ getUsers, userReducer, logout }) {
     }
   }, []);
 
-  useEffect(() => {
-    window.electron.exec('TASKLIST /v /fo list |find /i "google chrome" |find /v "N/A"', (_, stdout) => {
-      setShell(stdout);
+  const searchProcess = () => {
+    setProcSearchLoading(true);
+
+    window.electron.exec(`TASKLIST /v /fo csv | find "${searchInput}"`, (_, response) => {
+      const lines = response.split('\r\n');
+
+      if (lines.length > 0) {
+        const titles = lines.map((line) => {
+          const split = line.split(',');
+          return split[split.length - 1].replaceAll('"', '');
+        });
+
+        setShell(titles);
+      } else {
+        setShell([]);
+      }
+      setProcSearchLoading(false);
     });
-  }, []);
+  };
 
   const usersList = userReducer.list
     .filter((user) => user.id !== userId);
@@ -80,7 +107,7 @@ function Home({ getUsers, userReducer, logout }) {
       {usersList
         .map((user, index) => (
           <Box
-            key={user.id}
+            key={uuid()}
             as={motion.div}
             onClick={() => navigateTo('/user-detail', {
               state: {
@@ -105,9 +132,12 @@ function Home({ getUsers, userReducer, logout }) {
             <BoxText>{`${user.forename} ${user.surname}`}</BoxText>
           </Box>
         ))}
-      <SeeTabs
+      <SeeTitles
         as={motion.div}
-        onClick={() => setShowTabs(true)}
+        onClick={() => {
+          setShell([]);
+          setShowTabs(true);
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial="hidden"
@@ -117,16 +147,51 @@ function Home({ getUsers, userReducer, logout }) {
           visible: { x: 0 },
         }}
       >
-        <SeeTabsText>See Chrome tabs</SeeTabsText>
-      </SeeTabs>
+        <SeeTitlesText>Check titles</SeeTitlesText>
+      </SeeTitles>
       {showTabs && (
       <ModalBackground onClick={() => setShowTabs(false)}>
         <Modal onClick={(event) => event.stopPropagation()}>
-          <motion.span
-            onClick={() => window.electron.getTabs()}
-          >
-            {shellResult}
-          </motion.span>
+          <SearchWrapper>
+            <SearchInput
+              onChange={({ target: { value } }) => setSearchInput(value)}
+              placeholder="Type a process or program"
+              onKeyDown={({ key }) => {
+                if (key === 'Enter') searchProcess();
+              }}
+            />
+            <Button
+              onClick={() => searchProcess()}
+              text="Search"
+              color={colors.primary}
+              textColor={colors.secondary}
+            />
+          </SearchWrapper>
+          <MessageContainer>
+            <Message>{'Please, if you\'ll search for a program, use uppercase. Look for "Google Chrome", eg.'}</Message>
+          </MessageContainer>
+          <SearchBody>
+            {procSearchLoading ? (
+              <CentralizedContainer>
+                <Loading
+                  type="spin"
+                  color={colors.primary}
+                  height={40}
+                  width={40}
+                />
+              </CentralizedContainer>
+            ) : (
+              shellResult.length === 0 ? (
+                <CentralizedContainer>
+                  <Processes>{'No processes found'}</Processes>
+                </CentralizedContainer>
+              ) : (
+                shellResult.map((result) => (
+                  <Processes key={uuid()}>{`> ${result}`}</Processes>
+                ))
+              )
+            )}
+          </SearchBody>
         </Modal>
       </ModalBackground>
       )}
