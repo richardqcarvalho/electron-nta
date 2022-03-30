@@ -25,5 +25,7 @@ module.exports = {
     'default-param-last': 'off',
     'react/forbid-prop-types': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react/jsx-curly-brace-presence': 'off',
+    'no-nested-ternary': 'off',
   },
 };
