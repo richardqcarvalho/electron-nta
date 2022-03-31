@@ -14,6 +14,7 @@ app.on('ready', async () => {
     webPreferences: {
       preload: path.resolve(__dirname, 'preload.js'),
     },
+    resizable: false,
   });
 
   process.env.NODE_ENV === 'development' ? window.loadURL('http://localhost:3000') : window.loadFile('./build/index.html');
