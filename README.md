@@ -92,3 +92,13 @@ The most difficult part was construct the structure from the zero and find a way
 - Framer Motion
 - Redux
 - Node Child Process
+
+## Explaining some choices
+
+- Why use preload funcs instead of turn on nodeIntegration flag?
+
+    When I was studying about Electron, I discovered that expose all node funcs on renderer was a very bad security implementation, cause the "server" things could be accessed by the "client" side. Use preload funcs allow to the dev to choose what node funcs will be necessary to something in renderer and how and how much this will be needed.
+
+- Why use index.js and element jsx in the structure of the pages and components?
+
+    Just to improve the dev experience on code editor. When I have the names writed like right here, is easier to find what I need to find when I'm looking for some page or component. In addition, the index.js avoid to write on import section all the name of jsx file, which usually gets pretty big because of this writing logic.
