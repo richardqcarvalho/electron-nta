@@ -11,6 +11,7 @@ A basic Electron app with login, users list, simulation of a call and a chat, an
 * [Tasks](#tasks)
 * [About tasks and time to work](#about-tasks-and-time-to-work)
 * [Main technologies used](#main-technologies-used)
+* [Explaining some choices](#explaining-some-choices)
 
 ## Installation
 
