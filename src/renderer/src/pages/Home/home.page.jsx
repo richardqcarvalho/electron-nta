@@ -107,7 +107,7 @@ function Home({ getUsers, userReducer, logout }) {
       {usersList
         .map((user, index) => (
           <Box
-            key={uuid()}
+            key={user.id}
             as={motion.div}
             onClick={() => navigateTo('/user-detail', {
               state: {
